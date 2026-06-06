@@ -4,41 +4,66 @@
  */
 package test;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import java.util.Arrays;
+import java.util.Collection;
+
+import modelo.ConversorMoneda;
+
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 /**
  *
  * @author Nehuen
  */
+
+@RunWith(Parameterized.class)
 public class DolaritosTest {
-    
-    public DolaritosTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+
+    private double saldo;
+    private double compra;
+    private double esperado;
+
+    public DolaritosTest(
+            double saldo,
+            double compra,
+            double esperado) {
+
+        this.saldo = saldo;
+        this.compra = compra;
+        this.esperado = esperado;
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Parameterized.Parameters
+    public static Collection<Object[]> tomarDatos() {
+
+        return Arrays.asList(
+                new Object[][]{
+
+                    {180000,1500,181500},
+
+                    {120000,0,120000},
+
+                    {100000,-900,99100}
+                });
+    }
+
+    @Test
+    public void testSumaParametrizada() {
+
+        ConversorMoneda c =
+                new ConversorMoneda();
+
+        double resultado =
+                c.aumentarSaldo(
+                        saldo,
+                        compra);
+
+        Assert.assertEquals(
+                esperado,
+                resultado,
+                0.001);
+    }
 }
