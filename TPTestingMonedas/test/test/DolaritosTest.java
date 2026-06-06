@@ -8,11 +8,13 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import modelo.ConversorMoneda;
-
+import org.junit.Before;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
 
 /**
  *
@@ -49,6 +51,9 @@ public class DolaritosTest {
                     {100000,-900,99100}
                 });
     }
+    
+    @Before
+    
 
     @Test
     public void testSumaParametrizada() {

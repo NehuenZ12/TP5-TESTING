@@ -16,35 +16,45 @@ public class ConversorMonedaTest {
 
         conversor = new ConversorMoneda();
 
-        System.out.println(
-                "Bienvenido al sistema");
+        System.out.println(" INICIO DE PRUEBAS DEL CONVERSOR ");
     }
 
     @Before
     public void antesDeCadaPrueba() {
 
-        System.out.println(
-                Thread.currentThread()
-                .getStackTrace()[1]
-                .getMethodName());
+        System.out.println("\nPreparando ejecución del test...");
     }
 
     @Test
     public void testAumentarSaldo() {
 
+        System.out.println(
+                "Ejecutando: testAumentarSaldo");
+
         double esperado = 800;
 
         double obtenido =
-                conversor.aumentarSaldo(500,300);
+                conversor.aumentarSaldo(
+                        500,
+                        300);
 
         Assert.assertEquals(
                 esperado,
                 obtenido,
                 0.001);
+
+        System.out.println(
+                "Resultado esperado: " + esperado);
+
+        System.out.println(
+                "Resultado obtenido: " + obtenido);
     }
 
     @Test
     public void testRetirarDolares() {
+
+        System.out.println(
+                "Ejecutando: testRetirarDolares");
 
         double esperado = 1900;
 
@@ -57,6 +67,12 @@ public class ConversorMonedaTest {
                 esperado,
                 obtenido,
                 0.001);
+
+        System.out.println(
+                "Resultado esperado: " + esperado);
+
+        System.out.println(
+                "Resultado obtenido: " + obtenido);
     }
 
     @After
@@ -69,7 +85,6 @@ public class ConversorMonedaTest {
     @AfterClass
     public static void finalizar() {
 
-        System.out.println(
-                "La operación ha finalizado");
+        System.out.println(" LA OPERACIÓN HA FINALIZADO ");
     }
 }
