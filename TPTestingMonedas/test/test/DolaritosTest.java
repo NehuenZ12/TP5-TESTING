@@ -44,19 +44,35 @@ public class DolaritosTest {
         return Arrays.asList(
                 new Object[][]{
 
-                    {180000,1500,181500},
+                    {180000, 1500, 181500},
 
-                    {120000,0,120000},
+                    {120000, 0, 120000},
 
-                    {100000,-900,99100}
+                    {100000, -900, 99100}
                 });
     }
-    
+
     @Before
-    
+    public void antesDeCadaPrueba() {
+
+        System.out.println(
+                "\nPreparando prueba parametrizada...");
+    }
 
     @Test
     public void testSumaParametrizada() {
+
+        System.out.println(
+                "Ejecutando: testSumaParametrizada");
+
+        System.out.println(
+                "Saldo inicial: " + saldo);
+
+        System.out.println(
+                "Compra realizada: " + compra);
+
+        System.out.println(
+                "Resultado esperado: " + esperado);
 
         ConversorMoneda c =
                 new ConversorMoneda();
@@ -66,9 +82,19 @@ public class DolaritosTest {
                         saldo,
                         compra);
 
+        System.out.println(
+                "Resultado obtenido: " + resultado);
+
         Assert.assertEquals(
                 esperado,
                 resultado,
                 0.001);
+    }
+
+    @After
+    public void despuesDeCadaPrueba() {
+
+        System.out.println(
+                "Prueba finalizada.");
     }
 }
