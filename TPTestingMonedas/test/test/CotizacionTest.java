@@ -4,14 +4,12 @@
  */
 package test;
 
-import modelo.ConversorMoneda;
-import org.junit.Test;
-
 /**
  *
  * @author Nehuen
  */
 
+import org.junit.Assert;
 import modelo.ConversorMoneda;
 import org.junit.After;
 import org.junit.Before;
@@ -26,7 +24,7 @@ public class CotizacionTest {
                 "\nPreparando prueba de cotización...");
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testCotizarCero() {
 
         System.out.println(
@@ -44,9 +42,14 @@ public class CotizacionTest {
         ConversorMoneda c =
                 new ConversorMoneda();
 
-        c.calcularCotizacion(
-                180000,
-                0);
+        Assert.assertThrows(
+                ArithmeticException.class,
+                () -> {
+
+                    c.calcularCotizacion(
+                            180000,
+                            0);
+                });
     }
 
     @After
