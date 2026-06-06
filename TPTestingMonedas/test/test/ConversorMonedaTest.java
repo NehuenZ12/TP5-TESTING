@@ -5,7 +5,6 @@
 package test;
 
 import modelo.ConversorMoneda;
-import modelo.ConversorMoneda;
 import org.junit.*;
 
 public class ConversorMonedaTest {
